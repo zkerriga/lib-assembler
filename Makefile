@@ -5,7 +5,7 @@
 #     By: zkerriga                                                 >^,^<     	  #
 #                                                                   / \     	  #
 #     Created: 2020-08-03 07:48:25 by zkerriga                     (___)__  	  #
-#     Updated: 2020-08-03 07:55:05 by zkerriga                              	  #
+#     Updated: 2020-08-03 12:38:50 by zkerriga                              	  #
 #                                                                             	  #
 # ******************************************************************************* #
 
@@ -15,11 +15,15 @@ CC = nasm
 
 .PHONY: all
 all:
-	echo $
+	nasm -f elf64 ft_strlen.s -o ft_strlen.o
+	@echo $
+	gcc -I. main.c ft_strlen.o -o test
+	@echo $
+	./test
 
 .PHONY: clean
 clean:
-	echo $
+	$(RM) *.o
 
 .PHONY: fclean
 fclean:
