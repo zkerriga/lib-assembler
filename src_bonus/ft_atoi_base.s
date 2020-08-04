@@ -43,6 +43,8 @@ ft_atoi_base:
 	xor	rdi, rdi
 	mov	di, ax
 	push	rsi		; save rsi
+	call	ft_tolower
+	mov	rdi, rax
 	call	get_digit
 	pop	rsi
 	pop	rdi
