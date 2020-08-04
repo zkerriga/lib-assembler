@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 07:48:51 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/04 18:49:22 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/04 20:22:47 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,14 +307,34 @@ void	test_get_digit(void)
 
 void	test_ft_atoi_base(void)
 {
-	// printf("+ sign = '%c'\n", ft_atoi_base("          +1234", 10));
-	// printf("- sign = '%c'\n", ft_atoi_base("   \t     -1234", 10));
-	// printf("- sign = '%c'\n", ft_atoi_base("-1234", 10));
-	// printf("  sign = '%c'\n", ft_atoi_base("1234", 10));
-	printf("+ sign = '%d'\n", ft_atoi_base("          +1234", 10));
-	printf("- sign = '%d'\n", ft_atoi_base("   \t     -1234", 10));
-	printf("- sign = '%d'\n", ft_atoi_base("-1234", 10));
-	printf("  sign = '%d'\n", ft_atoi_base("1234", 10));
+	char	*src;
+
+	src = "          +1234";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 10), src);
+	src = "   \t     -1234";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 10), src);
+	src = "-1234";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 10), src);
+	src = "1234";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 10), src);
+	
+	src = "          +4321";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 10), src);
+	src = "   \t     -4321";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 10), src);
+	src = "-4321";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 10), src);
+	src = "4321";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 10), src);
+	
+	src = "          +ab2f";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 16), src);
+	src = "   \t     -ab2f";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 16), src);
+	src = "-ab2f";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 16), src);
+	src = "ab2f";
+	printf("nbr = %-5d |%s|\n", ft_atoi_base(src, 16), src);
 	// printf("\n\e[32m[+] SUCCESS: ft_atoi_base\e[0m\n\n");
 }
 
