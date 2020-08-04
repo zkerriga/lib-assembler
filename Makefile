@@ -19,8 +19,8 @@ SRC_DIR = src
 ACC = nasm
 AFLAGS = -f elf64
 
-CC = gcc
-FLAGS = -Wall -Wextra -Werror -O2 -I.
+CC = tcc
+FLAGS = -Wall -Wextra -Werror -I.
 
 FILES = $(wildcard $(SRC_DIR)/*.s)
 FILES_O = $(addprefix $(OBJ_DIR)/, $(FILES:.s=.o))
@@ -34,7 +34,7 @@ test: $(PROGRAM)
 	./$(PROGRAM)
 
 $(PROGRAM): $(NAME) main.o
-	$(CC) $(FLAGS) $(OBJ_DIR)/main.o -L. -lasm -o $(PROGRAM) 
+	$(CC) $(FLAGS) $(OBJ_DIR)/main.o libasm.a -o $(PROGRAM) 
 
 main.o: $(FILES_O) $(HEAD)
 	$(CC) $(FLAGS) -c main.c -o $(OBJ_DIR)/main.o
