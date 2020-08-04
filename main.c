@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 07:48:51 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/04 16:06:51 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/04 18:49:22 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,6 +246,78 @@ void	test_ft_isspace(void)
 	printf("\n\e[32m[+] SUCCESS: ft_isspace\e[0m\n\n");
 }
 
+void	test_ft_tolower(void)
+{
+	for (int i = 127; i > 0; --i)
+	{
+		if (ft_tolower(i) != tolower(i))
+			error("not lower");
+	}
+	printf("\n\e[32m[+] SUCCESS: ft_tolower\e[0m\n\n");
+}
+
+void	test_get_digit(void)
+{
+	char	c;
+	int		base;
+	int		res;
+
+	c = '1'; base = 10;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != 1)
+		error("get_digit");
+	c = '1'; base = 14;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != 1)
+		error("get_digit");
+	c = 'l'; base = 10;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != -1)
+		error("get_digit");
+	c = 'f'; base = 16;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != 15)
+		error("get_digit");
+	c = 'f'; base = 14;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != -1)
+		error("get_digit");
+	c = 'b'; base = 15;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != 11)
+		error("get_digit");
+	c = 'Z'; base = 16;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != -1)
+		error("get_digit");
+	c = 'Z'; base = 16;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != -1)
+		error("get_digit");
+	c = '9'; base = 10;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != 9)
+		error("get_digit");
+	c = '0'; base = 10;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != 0)
+		error("get_digit");
+	printf("\n\e[32m[+] SUCCESS: get_digit\e[0m\n\n");
+}
+
+void	test_ft_atoi_base(void)
+{
+	// printf("+ sign = '%c'\n", ft_atoi_base("          +1234", 10));
+	// printf("- sign = '%c'\n", ft_atoi_base("   \t     -1234", 10));
+	// printf("- sign = '%c'\n", ft_atoi_base("-1234", 10));
+	// printf("  sign = '%c'\n", ft_atoi_base("1234", 10));
+	printf("+ sign = '%d'\n", ft_atoi_base("          +1234", 10));
+	printf("- sign = '%d'\n", ft_atoi_base("   \t     -1234", 10));
+	printf("- sign = '%d'\n", ft_atoi_base("-1234", 10));
+	printf("  sign = '%d'\n", ft_atoi_base("1234", 10));
+	// printf("\n\e[32m[+] SUCCESS: ft_atoi_base\e[0m\n\n");
+}
+
 int		main()
 {
 	test_ft_strlen();
@@ -255,5 +327,8 @@ int		main()
 	test_ft_read();
 	test_ft_strdup();
 	test_ft_isspace();
+	test_ft_tolower();
+	test_get_digit();
+	test_ft_atoi_base();
 	return (0);
 }

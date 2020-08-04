@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 12:29:54 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/04 15:51:24 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/04 18:03:51 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@ ssize_t	ft_read(int fd, void *buf, size_t count);
 char	*ft_strdup(const char *s);
 
 int		ft_isspace(int c);
+int		ft_tolower(int c);
+int		get_digit(char c, int base);
+int		ft_atoi_base(const char *str, int str_base);
 
 #endif
