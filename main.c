@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 07:48:51 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/04 11:52:20 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/04 12:26:34 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,35 @@ void	test_ft_read(void)
 	printf("\n\e[32m[+] SUCCESS: ft_read\e[0m\n\n");
 }
 
+void	test_ft_strdup(void)
+{
+	char	*src0;
+	char	*sys;
+	char	*ft;
+
+	src0 = "";
+	printf("ft_strdup: |%s|\n   strdup: |%s|\n\n", (ft = ft_strdup(src0)), (sys = strdup(src0)));
+	if (strcmp(sys, ft) != 0)
+		error("zero str");
+	free(sys);
+	free(ft);
+
+	src0 = "short";
+	printf("ft_strdup: |%s|\n   strdup: |%s|\n\n", (ft = ft_strdup(src0)), (sys = strdup(src0)));
+	if (strcmp(sys, ft) != 0)
+		error("short str");
+	free(sys);
+	free(ft);
+
+	src0 = "llooooooooooooooooooooooooooooooooooooong!";
+	printf("ft_strdup: |%s|\n   strdup: |%s|\n\n", (ft = ft_strdup(src0)), (sys = strdup(src0)));
+	if (strcmp(sys, ft) != 0)
+		error("long str");
+	free(sys);
+	free(ft);
+	printf("\n\e[32m[+] SUCCESS: ft_strdup\e[0m\n\n");
+}
+
 int		main()
 {
 	test_ft_strlen();
@@ -213,5 +242,6 @@ int		main()
 	test_ft_strcmp();
 	test_ft_write();
 	test_ft_read();
+	test_ft_strdup();
 	return (0);
 }
