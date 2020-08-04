@@ -1,5 +1,3 @@
-section	.data
-sign	resq	1
 section	.text
 
 extern	ft_isspace	; int ft_isspace(int c);
@@ -38,3 +36,6 @@ ft_atoi_base:
 .after_sign:
 	mov	rax, [sign]	; for check (delete this)
 	ret
+
+section	.bss
+sign	resq	1

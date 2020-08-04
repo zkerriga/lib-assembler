@@ -9,5 +9,5 @@ ft_tolower:
 	cmp	rax, 'Z'
 	jg	.return
 	add	rax, 'a' - 'A'
-.return
+.return:
 	ret
