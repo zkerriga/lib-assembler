@@ -4,11 +4,11 @@ global ft_strlen
 
 ft_strlen:
 	mov	rax, rdi
-cycle:
+.loop:
 	cmp	byte [rax], 0
-	je	endcycle
+	je	.endloop
 	inc	rax
-	jmp	cycle
-endcycle:
+	jmp	.loop
+.endloop:
 	sub	rax, rdi
 	ret

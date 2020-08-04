@@ -6,28 +6,44 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 07:48:51 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/03 13:48:03 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/04 07:35:02 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
+#include <string.h>
 
-/*
-** There should be tests for the library here.
-*/
-
-int	main()
+void	error(char *output)
 {
-	size_t		len = 0;
-	const char	*str = "Bloody hell!";
+	printf("ERROR: %s\n", output);
+	exit(1);
+}
 
-	len = ft_strlen(str);
-	printf("Len = %u\n", len);
-	printf("Zero str len = %u\n", ft_strlen("\0"));
-	printf("Zero str len = %u\n", ft_strlen("1"));
-	printf("Zero str len = %u\n", ft_strlen("12"));
-	printf("Zero str len = %u\n", ft_strlen("123"));
-	printf("Zero str len = %u\n", ft_strlen("1234"));
-	printf("Zero str len = %u\n", ft_strlen("12345"));
+void	test_ft_strlen(void)
+{
+	size_t	len;
+
+	len = 0;
+	if ((len = ft_strlen("")) != strlen(""))
+		error("zero str");
+	if ((len = ft_strlen("\0")) != strlen("\0"))
+		error("zero str");
+	if ((len = ft_strlen("\0\0")) != strlen("\0\0"))
+		error("zero str");
+	if ((len = ft_strlen("123")) != strlen("123"))
+		error("tree str 123");
+	if ((len = ft_strlen("abc")) != strlen("abc"))
+		error("tree str abc");
+	if ((len = ft_strlen("looooooooooooooooooooooooooooooooong")) !=
+		strlen("looooooooooooooooooooooooooooooooong"))
+	{
+		error("long str");
+	}
+	printf("\n\e[32m[+] SUCCESS: ft_strlen\e[0m\n\n");
+}
+
+int		main()
+{
+	test_ft_strlen();
 	return (0);
 }
