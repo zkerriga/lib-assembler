@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 07:48:51 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/04 12:26:34 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/04 16:06:51 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
+#include <ctype.h>
 
 void	error(char *output)
 {
@@ -235,6 +236,16 @@ void	test_ft_strdup(void)
 	printf("\n\e[32m[+] SUCCESS: ft_strdup\e[0m\n\n");
 }
 
+void	test_ft_isspace(void)
+{
+	for (int i = 100; i != 0; --i)
+	{
+		if (!!ft_isspace(i) != !!isspace(i))
+			error("not space");
+	}
+	printf("\n\e[32m[+] SUCCESS: ft_isspace\e[0m\n\n");
+}
+
 int		main()
 {
 	test_ft_strlen();
@@ -243,5 +254,6 @@ int		main()
 	test_ft_write();
 	test_ft_read();
 	test_ft_strdup();
+	test_ft_isspace();
 	return (0);
 }
