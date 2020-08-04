@@ -6,12 +6,16 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 07:48:51 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/04 09:29:08 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/04 11:52:20 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
 #include <string.h>
+#include <strings.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <unistd.h>
 
 void	error(char *output)
 {
@@ -119,10 +123,95 @@ void	test_ft_strcmp(void)
 	printf("\n\e[32m[+] SUCCESS: ft_strcmp\e[0m\n\n");
 }
 
+void	test_ft_write(void)
+{
+	int		fd;
+	ssize_t		ret;
+	int		errno_tmp;
+	char	*str = "Zkerriga's string\n";
+
+	ret = ft_write(1, str, 18);
+	ret += ft_write(1, &"", 1);
+	ret += ft_write(1, &"\n", 1);
+	ret -= write(1, str, 18);
+	ret -= write(1, &"", 1);
+	ret -= write(1, &"\n", 1);
+	if (ret != 0)
+		error("return error");
+
+	fd = open("write.txt", O_CREAT | O_APPEND | O_WRONLY, 0755);
+	ft_write(fd, str, 18);
+	write(fd, str, 18);
+	close(fd);
+
+	errno = 0;
+	ft_write(-1, str, 18);
+	printf("errno == %d\n", (errno_tmp = errno));
+
+	errno = 0;
+	write(-1, str, 18);
+	printf("errno == %d\n", errno);
+	if (errno_tmp != errno)
+		error("not equal errno");
+
+	errno = 0;
+	fd = open("write.txt", O_WRONLY);
+	ft_write(fd, str, 18);
+	write(fd, str, 18);
+	close(fd);
+	if (errno != 0)
+		error("errno wtf");
+	printf("\n\e[32m[+] SUCCESS: ft_write\e[0m\n\n");
+}
+
+void	test_ft_read(void)
+{
+	int		fd;
+	int		ret[2];
+	char	buf[30];
+
+	errno = 0;
+	fd = open("main.c", O_RDONLY);
+	bzero(buf, sizeof(buf));
+	ret[0] = read(fd, buf, 20);
+	buf[20] = '\0';
+	printf("fd == %d, ret == %d, buf == %s, errno == %d\n", fd, ret[0], buf, errno);
+	close(fd);
+
+	errno = 0;
+	fd = open("main.c", O_RDONLY);
+	bzero(buf, sizeof(buf));
+	ret[1] = ft_read(fd, buf, 20);
+	buf[20] = '\0';
+	printf("fd == %d, ret == %d, buf == %s, errno == %d\n\n", fd, ret[1], buf, errno);
+	close(fd);
+	if (ret[0] != ret[1])
+		error("normal read");
+
+	errno = 0;
+	fd = open("-1", O_RDONLY);
+	bzero(buf, sizeof(buf));
+	ret[0] = read(fd, buf, 20);
+	buf[20] = '\0';
+	printf("fd == %d, ret == %d, buf == %s, errno == %d\n", fd, ret[0], buf, errno);
+
+	errno = 0;
+	fd = open("-1", O_RDONLY);
+	bzero(buf, sizeof(buf));
+	ret[1] = ft_read(fd, buf, 20);
+	buf[20] = '\0';
+	printf("fd == %d, ret == %d, buf == %s, errno == %d\n\n", fd, ret[1], buf, errno);
+	if (ret[0] != ret[1])
+		error("fake read");
+	printf("\n\e[32m[+] SUCCESS: ft_read\e[0m\n\n");
+}
+
 int		main()
 {
 	test_ft_strlen();
 	test_ft_strcpy();
 	test_ft_strcmp();
+	test_ft_write();
+	test_ft_read();
 	return (0);
 }
