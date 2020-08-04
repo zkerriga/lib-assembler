@@ -1,6 +1,6 @@
 section .text
 
-global ft_strlen
+global ft_strlen ; rdi = const char *str
 
 ft_strlen:
 	mov	rax, rdi
