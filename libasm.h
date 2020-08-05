@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 12:29:54 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/05 09:18:25 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/05 11:02:37 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBASM_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <errno.h>
 
 typedef struct		s_list
@@ -25,6 +24,7 @@ typedef struct		s_list
 
 t_list	*ft_lstnew(void *data);
 void	ft_list_push_front(t_list **begin_list, void *data);
+int		ft_list_size(t_list *begin_list);
 
 size_t	ft_strlen(const char *str);
 char	*ft_strcpy(char *dest, const char *src);
@@ -37,6 +37,5 @@ int		ft_isspace(int c);
 int		ft_tolower(int c);
 int		get_digit(char c, int base);
 int		ft_atoi_base(const char *str, int str_base);
-
 
 #endif
