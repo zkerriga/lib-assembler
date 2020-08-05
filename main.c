@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 07:48:51 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/04 20:47:37 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/05 10:21:49 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	error(char *output)
 	exit(1);
 }
 
-void	test_ft_strlen(void)
+/*void	test_ft_strlen(void)
 {
 	size_t	len;
 
@@ -366,18 +366,67 @@ void	test_ft_atoi_base(void)
 
 	printf("\n\e[32m[+] SUCCESS: ft_atoi_base\e[0m\n\n");
 }
+*/
+
+void	test_ft_lstnew(void)
+{
+	t_list	*lst;
+	int		data;
+
+	data = 123;
+	lst = ft_lstnew(&data);
+	printf("*(lst->data) = %d\n", *((int *)(lst->data)));
+	printf("lst->next = %d\n", lst->next);
+	if (*((int *)(lst->data)) != 123 || lst->next != NULL)
+		error("123 t_list");
+	free(lst);
+
+	data = 190001;
+	lst = ft_lstnew(&data);
+	printf("*(lst->data) = %d\n", *((int *)(lst->data)));
+	printf("lst->next = %d\n", lst->next);
+	if (*((int *)(lst->data)) != 190001 || lst->next != NULL)
+		error("190001 t_list");
+	free(lst);
+	printf("\n\e[32m[+] SUCCESS: ft_lstnew\e[0m\n\n");
+}
+
+void	test_ft_list_push_front(void)
+{
+	t_list	*lst = NULL;
+	char	*str1 = "str1";
+	char	*str2 = "str2";
+	
+	ft_list_push_front(&lst, str1);
+	ft_list_push_front(&lst, str2);
+	printf("lst->data = |%s|, ->next = %p\n", (char *)lst->data, lst->next);
+	printf("lst->next->data = |%s|, ->next = %p\n", (char *)lst->next->data, lst->next->next);
+	if (lst->next->next != NULL)
+		error("add front");
+	ft_list_push_front(&lst, str1);
+	printf("lst->data = |%s|, ->next = %p\n", (char *)lst->data, lst->next);
+	printf("lst->next->data = |%s|, ->next = %p\n", (char *)lst->next->data, lst->next->next);
+	if (lst->next->data != str2)
+		error("add front");
+	free(lst->next->next);
+	free(lst->next);
+	free(lst);
+	printf("\n\e[32m[+] SUCCESS: ft_list_push_front\e[0m\n\n");
+}
 
 int		main()
 {
-	test_ft_strlen();
-	test_ft_strcpy();
-	test_ft_strcmp();
-	test_ft_write();
-	test_ft_read();
-	test_ft_strdup();
-	test_ft_isspace();
-	test_ft_tolower();
-	test_get_digit();
-	test_ft_atoi_base();
+	// test_ft_strlen();
+	// test_ft_strcpy();
+	// test_ft_strcmp();
+	// test_ft_write();
+	// test_ft_read();
+	// test_ft_strdup();
+	// test_ft_isspace();
+	// test_ft_tolower();
+	// test_get_digit();
+	// test_ft_atoi_base();
+	// test_ft_lstnew();
+	test_ft_list_push_front();
 	return (0);
 }

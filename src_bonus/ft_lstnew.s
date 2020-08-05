@@ -8,6 +8,11 @@ ft_lstnew:
 	push	rdi
 	mov	rdi, 16			; 2 * 8 byte for malloc
 	call	malloc
+	test	rax, rax
+	jz	.error
 	pop	qword [rax]		; saved rdi to *rax
 	mov	qword [rax + 8], 0x0
+	ret
+.error:
+	pop	rdi
 	ret
