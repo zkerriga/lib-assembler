@@ -5,7 +5,7 @@
 #     By: zkerriga                                                 >^,^<     	  #
 #                                                                   / \     	  #
 #     Created: 2020-08-03 07:48:25 by zkerriga                     (___)__  	  #
-#     Updated: 2020-08-05 11:17:05 by zkerriga                              	  #
+#     Updated: 2020-08-05 20:51:03 by zkerriga                              	  #
 #                                                                             	  #
 # ******************************************************************************* #
 
@@ -66,7 +66,7 @@ test: $(PROGRAM)
 	./$(PROGRAM)
 
 $(PROGRAM): $(TEST_FILES_O) $(NAME)
-	$(CC) $(FLAGS) $? -o $(PROGRAM)
+	$(CC) $(FLAGS) $(TEST_FILES_O) $(NAME) -o $(PROGRAM)
 
 $(TEST_FILES_O): $(OBJ_DIR)/%.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@

@@ -6,18 +6,57 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 11:27:54 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/05 11:33:47 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/05 21:29:58 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.h"
 
-static int	compare(void *ptr1, void *ptr2)
+static int	compare(void *data_ref, void *data)
 {
-	return (ptr1 - ptr2);
+	return (data_ref - data);
 }
 
 void		test_ft_list_remove_if(void)
 {
+	t_list	*lst = NULL;
+	t_list	*i;
+	char	*str = "abcde";
 
+	ft_list_push_front(&lst, str + 4);
+	ft_list_push_front(&lst, str + 3);
+	ft_list_push_front(&lst, str + 2);
+	ft_list_push_front(&lst, str + 1);
+	ft_list_push_front(&lst, str + 0);
+	i = lst;
+	while (i)
+	{
+		printf("-> %s\n", i->data);
+		i = i->next;
+	}
+	printf("\n");
+	ft_list_remove_if(&lst, str + 3, compare);
+	i = lst;
+	while (i)
+	{
+		printf("-> %s\n", i->data);
+		i = i->next;
+	}
+	printf("\n");
+	ft_list_remove_if(&lst, str + 1, compare);
+	i = lst;
+	while (i)
+	{
+		printf("-> %s\n", i->data);
+		i = i->next;
+	}
+	printf("\n");
+	ft_list_remove_if(&lst, str + 4, compare);
+	i = lst;
+	while (i)
+	{
+		printf("-> %s\n", i->data);
+		i = i->next;
+	}
+	printf("\n\e[33m[?] SUCCESS: ft_list_remove_if\e[0m\n\n");
 }

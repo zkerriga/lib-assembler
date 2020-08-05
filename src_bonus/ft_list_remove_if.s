@@ -50,17 +50,18 @@ ft_list_remove_if:
 	mov	rdi, qword [rax]	; rdi = rcx->next->data
 	call	rdx			; call cmp()
 	pop	rcx		;;
-	pop	rdx		;; checkout
-	pop	rsi		;;
-	pop	rdi		;;
 	test	rax, rax		; rax = cmp() retutn
 	jnz	.cmp_false	
-
-	;;;;
-	;;;;	the if block
-	;;;;
-
+	mov	rdi, qword [rcx + 8]	; rdi = rcx->next
+	mov	rax, qword [rdi + 8]	; rax = rcx->next->next
+	mov	qword [rcx + 8], rax	; rcx->next = rax
+	push	rcx
+	call	free
+	pop	rcx
 .cmp_false:
+	pop	rdx
+	pop	rsi
+	pop	rdi
 	mov	rcx, qword [rcx + 8]	; rcx = rcx->next
 	jmp	.middle_remove_loop
 .end_middle_remove_loop:
