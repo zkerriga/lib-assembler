@@ -13,7 +13,9 @@ ft_atoi_base:
 	mov	al, byte [rdi]
 	xor	rdi, rdi
 	mov	di, ax
+	push	rsi
 	call	ft_isspace
+	pop	rsi
 	pop	rdi
 	test	rax, rax	; if (ft_isspace(c))
 	jz	.end_space
@@ -31,7 +33,6 @@ ft_atoi_base:
 	neg	byte [sign]
 .if_sign_plus:
 	inc	rdi
-	jmp	.after_sign
 
 .after_sign:
 	xor	rax, rax
@@ -50,7 +51,7 @@ ft_atoi_base:
 	pop	rdi
 	cmp	rax, 0		; get_digit() >= 0
 	jl	.end_digit
-
+	
 	push	rax		;;; result = result * base
 	mov	rax, [result]
 	mov	rbx, rsi
