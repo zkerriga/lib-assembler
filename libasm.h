@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 12:29:54 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/05 11:02:37 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 15:41:49 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_list	*ft_lstnew(void *data);
 void	ft_list_push_front(t_list **begin_list, void *data);
 int		ft_list_size(t_list *begin_list);
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
+void	ft_list_swap(t_list *l1, t_list *l2);
+void	ft_list_sort(t_list **begin_list, int (*cmp)());
 
 size_t	ft_strlen(const char *str);
 char	*ft_strcpy(char *dest, const char *src);

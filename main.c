@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 07:48:51 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/05 20:42:29 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 14:34:49 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		main()
 	test_ft_atoi_base();
 	test_ft_lstnew();
 	test_ft_list_push_front();
-	test_ft_list_sort();
 	test_ft_list_remove_if();
+	test_ft_list_sort();
 	return (0);
 }
