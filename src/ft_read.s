@@ -9,7 +9,6 @@ _ft_read:
 	jc	.error
 	ret
 .error:
-	neg	rax
 	push	rax
 	call	___error
 	pop	rdx
