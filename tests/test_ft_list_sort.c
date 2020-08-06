@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 11:28:04 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/06 15:43:54 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 16:36:30 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,18 @@ void bubbleSort(t_list **begin_list, int (*cmp)())
 		i_list = i_list->next;
 	}
 }
-/*
-	for (int i = 0; i < size - 1; i++)
-	{
-		for (int j = 0; j < size - i - 1; j++)
-    	{
-      		if ( num[j] > num[j + 1])
-			{
-				swap;
-      		}
-    	}
-  	}
-*/
 
 static int		compare(void *data_ref, void *data)
 {
+	printf("-- %c :: %c --", *(char *)data_ref, *(char *)data);
+	printf("> %2d\n", data_ref - data);
 	return (data_ref - data);
 }
 
 void	test_ft_list_sort(void)
 {
 	t_list	*lst = NULL;
-	char	*str = "abcde";
+	char	*str = "12345";
 	t_list	*cur = NULL;
 
 	ft_list_push_front(&lst, str + 0);	
@@ -86,6 +76,7 @@ void	test_ft_list_sort(void)
 	}
 	printf(" --- \n");
 	//bubbleSort(&lst, compare);
+	ft_list_sort(&lst, compare);
 	cur = lst;
 	while (cur)
 	{
