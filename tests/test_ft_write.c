@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 10:48:56 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/06 08:25:11 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 10:35:17 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	test_ft_write(void)
 	close(fd);
 
 	errno = 0;
-	ft_write(-1, str, 18);
+	ret = ft_write(-1, str, 18);
 	printf("errno == %d\n", (errno_tmp = errno));
 
 	errno = 0;

@@ -6,14 +6,12 @@ _ft_write:
 	xor	rax, rax
 	mov	rax, 0x2000004		; write sys_code
 	syscall					; call write
-	cmp	rax, 0
-	jl	.error
+	jc	.error
 	ret
 .error:
-	neg	rax
 	push	rax
 	call	___error
 	pop	rdx
-	mov	[rax], edx
+	mov	dword [rax], edx
 	mov	rax, -1
 	ret
