@@ -1,8 +1,8 @@
 section .text
 
-global	ft_strcpy ; rdi = char *dest, dsi = const char *src
+global	_ft_strcpy ; rdi = char *dest, dsi = const char *src
 
-ft_strcpy:
+_ft_strcpy:
 	mov	rax, rdi
 .loop:
 	mov	dl, byte [rsi]

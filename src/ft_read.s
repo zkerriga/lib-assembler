@@ -1,8 +1,8 @@
 section	.text
-extern	__errno_location
-global	ft_read ; rdi = int fd, rsi = const void *buf, rdx = size_t count
+extern	___error
+global	_ft_read ; rdi = int fd, rsi = const void *buf, rdx = size_t count
 
-ft_read:
+_ft_read:
 	xor	rax, rax
 	mov	rax, 0		; read sys_code
 	syscall			; call read
@@ -12,7 +12,7 @@ ft_read:
 .error:
 	neg	rax
 	push	rax
-	call	__errno_location
+	call	___error
 	pop	rdx
 	mov	[rax], edx
 	mov	rax, -1

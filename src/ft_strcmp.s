@@ -1,8 +1,8 @@
 section .text
 
-global	ft_strcmp ; rdi = const char *s1, rsi = const char *s2
+global	_ft_strcmp ; rdi = const char *s1, rsi = const char *s2
 
-ft_strcmp:
+_ft_strcmp:
 	xor	rax, rax
 	xor	rdx, rdx
 .loop:

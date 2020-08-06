@@ -1,8 +1,8 @@
 section	.text
 
-global	ft_list_size	; int ft_list_size(t_list *begin_list);
+global	_ft_list_size	; int ft_list_size(t_list *begin_list);
 			;				rdi
-ft_list_size:
+_ft_list_size:
 	xor	rax, rax	; counter
 .while_not_null:
 	test	rdi, rdi

@@ -1,8 +1,8 @@
 section	.text
 
-global	get_digit	; int	get_digit(char c, int base);
+global	_get_digit	; int	get_digit(char c, int base);
 
-get_digit:		; rdi = char c, rsi = base
+_get_digit:		; rdi = char c, rsi = base
 	cmp	rsi, 0xB	; if base <= 10
 	jl	.true1
 	add	rsi, 'a' - 0xA	; rsi = max_digit

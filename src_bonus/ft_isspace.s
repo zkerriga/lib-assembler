@@ -1,8 +1,8 @@
 section	.text
 
-global	ft_isspace	; int ft_isspace(int c);
+global	_ft_isspace	; int ft_isspace(int c);
 
-ft_isspace:
+_ft_isspace:
 	xor	rax, rax
 	cmp	rdi, 0x8	; 0x8 = '\b'
 	jg	.true1

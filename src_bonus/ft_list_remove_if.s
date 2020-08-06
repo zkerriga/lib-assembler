@@ -1,10 +1,10 @@
 section	.text
 
-extern	free			; void free(void *);
-global	ft_list_remove_if	; void ft_list_remove_if(t_list **, void *, int (*cmp)());
+extern	_free			; void free(void *);
+global	_ft_list_remove_if	; void ft_list_remove_if(t_list **, void *, int (*cmp)());
 				; rdi = **begin_list, rsi = *data_ref, rdx = int (*cmp)()
 
-ft_list_remove_if:
+_ft_list_remove_if:
 	test	rdi, rdi
 	jz	.error
 	push	rbx		; save rbx
@@ -30,7 +30,7 @@ ft_list_remove_if:
 	push	rsi
 	push	rdx
 	mov	rdi, rax
-	call	free
+	call	_free
 	pop	rdx
 	pop	rsi
 	pop	rdi
@@ -56,7 +56,7 @@ ft_list_remove_if:
 	mov	rax, qword [rdi + 8]	; rax = rcx->next->next
 	mov	qword [rcx + 8], rax	; rcx->next = rax
 	push	rcx
-	call	free
+	call	_free
 	pop	rcx
 .cmp_false:
 	pop	rdx

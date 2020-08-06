@@ -18,10 +18,10 @@ SRC_DIR = src
 BONUS_DIR = src_bonus
 
 ACC = nasm
-AFLAGS = -f elf64
+AFLAGS = -f macho64
 
-CC = tcc	
-FLAGS = -Wall -Wextra -Werror -I. -I./$(TEST_DIR)
+CC = gcc
+FLAGS = -Wall -Wextra -I. -I./$(TEST_DIR)
 
 FILES = $(wildcard $(SRC_DIR)/*.s) $(wildcard $(BONUS_DIR)/*.s)
 FILES_O = $(addprefix $(OBJ_DIR)/, $(FILES:.s=.o))

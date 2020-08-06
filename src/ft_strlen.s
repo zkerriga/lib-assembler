@@ -1,8 +1,8 @@
 section .text
 
-global ft_strlen ; rdi = const char *str
+global _ft_strlen ; rdi = const char *str
 
-ft_strlen:
+_ft_strlen:
 	mov	rax, rdi
 .loop:
 	cmp	byte [rax], 0
