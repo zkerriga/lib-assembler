@@ -28,7 +28,7 @@ FILES_O = $(addprefix $(OBJ_DIR)/, $(FILES:.s=.o))
 
 .PHONY: all
 all: $(OBJ_DIR) $(NAME)
-	@echo -e "\n\e[32m[+] The $(NAME) assembled!\e[0m"
+	@echo "\n\033[32m[+] The $(NAME) assembled!\033[0m\n"
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)/$(SRC_DIR) $(OBJ_DIR)/$(BONUS_DIR)
@@ -90,7 +90,7 @@ retest: fcleantest test
 
 .PHONY: bonus
 bonus: all
-	@echo -e "\n\e[32m[+] The super-$(NAME) assembled!\e[0m"
+	@echo "\n\033[32m[+] The super-$(NAME) assembled!\033[0m"
 
 #
 # Bonus
