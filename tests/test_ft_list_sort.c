@@ -6,12 +6,13 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 11:28:04 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/06 16:36:30 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 17:29:37 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.h"
 
+/*
 void	swap(t_list *lst1, t_list *lst2)
 {
 	void	*swp;
@@ -41,12 +42,18 @@ void bubbleSort(t_list **begin_list, int (*cmp)())
 		i_list = i_list->next;
 	}
 }
+*/
 
 static int		compare(void *data_ref, void *data)
 {
-	printf("-- %c :: %c --", *(char *)data_ref, *(char *)data);
-	printf("> %2d\n", data_ref - data);
+	//printf("-- %c :: %c --", *(char *)data_ref, *(char *)data);
+	//printf("> %2d\n", data_ref - data);
 	return (data_ref - data);
+}
+
+static int		compare_rev(void *data_ref, void *data)
+{
+	return (data - data_ref);
 }
 
 void	test_ft_list_sort(void)
@@ -77,6 +84,13 @@ void	test_ft_list_sort(void)
 	printf(" --- \n");
 	//bubbleSort(&lst, compare);
 	ft_list_sort(&lst, compare);
+	cur = lst;
+	while (cur)
+	{
+		printf("-> %s\n", cur->data);
+		cur = cur->next;
+	}
+	ft_list_sort(&lst, compare_rev);
 	cur = lst;
 	while (cur)
 	{
