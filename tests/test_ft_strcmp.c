@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 10:48:51 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/05 10:53:31 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 17:54:20 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,4 @@ void	test_ft_strcmp(void)
 	printf("ft_strcmp: %d\n   strcmp: %d\n", ft_strcmp(s1, s2), strcmp(s1, s2));
 	printf("\n\e[32m[+] SUCCESS: ft_strcmp\e[0m\n\n");
 }
+

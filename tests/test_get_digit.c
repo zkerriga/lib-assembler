@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 10:49:28 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/05 10:57:03 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 18:19:11 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ void	test_get_digit(void)
 	c = '0'; base = 10;
 	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
 	if (res != 0)
+		error("get_digit");
+	c = 'a'; base = 500;
+	printf("c = %c, base = %d --> %d\n", c, base, (res = get_digit(c, base)));
+	if (res != 10)
 		error("get_digit");
 	printf("\n\e[32m[+] SUCCESS: get_digit\e[0m\n\n");
 }

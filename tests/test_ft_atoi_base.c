@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 10:49:36 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/05 10:57:49 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 18:40:16 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@ void	test_ft_atoi_base(void)
 	char	*src;
 	int		res;
 
+	src = " 0000101";
+	printf("nbr = %-5d |%s|\n", (res = ft_atoi_base(src, 2)), src);
+	if (res != 5) error("atoi_base");
+	src = " -2147483648";
+	printf("nbr = %-5d |%s|\n", (res = ft_atoi_base(src, 10)), src);
+	if (res != -2147483648) error("atoi_base");
+	src = "abcdefgh";
+	printf("nbr = %-5d |%s|\n", (res = ft_atoi_base(src, 500)), src);
+	if (res != 0) error("atoi_base");
+	if (ft_atoi_base(" 12231", 1) != 0) error("atoi_base");
 	src = "          +1234";
 	printf("nbr = %-5d |%s|\n", (res = ft_atoi_base(src, 10)), src);
 	if (res != 1234) error("atoi_base");

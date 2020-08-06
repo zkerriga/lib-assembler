@@ -8,6 +8,13 @@ global	_ft_atoi_base	; int ft_atoi_base(const char *s, int base);
 
 _ft_atoi_base:
 	xor	rax, rax
+	cmp	rsi, 2
+	jl	.error
+	cmp	rsi, 16
+	jg	.error
+	jmp	.while_space
+.error:
+	ret
 .while_space:
 	push	rdi		; save rdi
 	mov	al, byte [rdi]

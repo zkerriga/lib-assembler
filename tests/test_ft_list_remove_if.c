@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 11:27:54 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/05 21:29:58 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 18:46:57 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,22 @@ void		test_ft_list_remove_if(void)
 		printf("-> %s\n", i->data);
 		i = i->next;
 	}
+	printf("\n");
+    ft_list_remove_if(&lst, str, compare);
+    i = lst;
+    while (i)
+    {
+        printf("-> %s\n", i->data);
+        i = i->next;
+    }
+    ft_list_remove_if(&lst, NULL, compare);
+	printf("\n last:\n");
+    ft_list_remove_if(&lst, str + 2, compare);
+    i = lst;
+    while (i)
+    {
+        printf("-> %s\n", i->data);
+        i = i->next;
+    }
 	printf("\n\e[33m[?] SUCCESS: ft_list_remove_if\e[0m\n\n");
 }

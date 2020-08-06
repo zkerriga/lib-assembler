@@ -6,7 +6,7 @@
 /*   By: zkerriga <zkerriga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 11:28:04 by zkerriga          #+#    #+#             */
-/*   Updated: 2020/08/06 17:29:37 by zkerriga         ###   ########.fr       */
+/*   Updated: 2020/08/06 18:47:41 by zkerriga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	test_ft_list_sort(void)
 		printf("-> %s\n", cur->data);
 		cur = cur->next;
 	}
+	printf(" --- \n");
 	ft_list_sort(&lst, compare_rev);
 	cur = lst;
 	while (cur)
