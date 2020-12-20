@@ -1,4 +1,4 @@
-# libasm
+# lib-assembler
 :runner::floppy_disk: A small library written in the assembler language. Contains the most necessary functions.
 
 #### Description:
